@@ -1,13 +1,3 @@
-
-
-output "bastion_autoscaling_group_ids" {
-  value = ["${aws_autoscaling_group.bastions-kubernetesnurjan-com.id}"]
-}
-
-output "bastion_security_group_ids" {
-  value = ["${aws_security_group.bastion-kubernetesnurjan-com.id}"]
-}
-
 output "bastions_role_arn" {
   value = "${aws_iam_role.bastions-kubernetesnurjan-com.arn}"
 }
@@ -108,9 +98,6 @@ output "vpc_id" {
   value = "${aws_vpc.kubernetesnurjan-com.id}"
 }
 
-provider "aws" {
-  region = "us-west-2"
-}
 
 resource "aws_autoscaling_attachment" "bastions-kubernetesnurjan-com" {
   elb                    = "${aws_elb.bastion-kubernetesnurjan-com.id}"
@@ -1169,6 +1156,3 @@ resource "aws_vpc_dhcp_options_association" "kubernetesnurjan-com" {
   dhcp_options_id = "${aws_vpc_dhcp_options.kubernetesnurjan-com.id}"
 }
 
-terraform = {
-  required_version = ">= 0.9.3"
-}
